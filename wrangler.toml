@@ -1,0 +1,9 @@
+name = "vercha"  # Nombre de tu Worker
+type = "javascript"  # O "webpack" si usas un bundler
+
+account_id = "TU_ACCOUNT_ID"  # Reemplaza con tu ID de cuenta de Cloudflare
+workers_dev = true  # Para desplegar en workers.dev
+route = ""  # Puedes definir una URL específica si usas un dominio propio
+zone_id = ""  # Si tienes un dominio en Cloudflare
+
+compatibility_date = "2024-03-28"  # Fecha de compatibilidad, usa la más reciente
