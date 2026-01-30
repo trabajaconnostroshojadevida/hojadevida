@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0F172A;
+  --color-accent: #D4AF37;
+  /* Metallic Gold for a more premium feel */
+  --color-background: #F8FAFC;
+  --color-text: #1e293b;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #FDFDFD;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+}
+
+/* Global Transitions */
+* {
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1;
+}
+
+/* Premium Classes */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.shadow-premium {
+  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.08);
+}
+
+.btn {
+  @apply px-6 py-3 font-bold rounded-2xl transition-all duration-300 transform active:scale-95 focus:outline-none focus:ring-4;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-opacity-95 shadow-lg shadow-primary/10 focus:ring-primary/5;
+}
+
+.btn-accent {
+  @apply bg-accent text-white hover:bg-opacity-95 shadow-lg shadow-accent/20 focus:ring-accent/5;
+}
+
+/* Input Styles */
+input,
+select,
+textarea {
+  @apply border-gray-100 bg-gray-50/50 focus:bg-white focus:border-accent focus:ring-4 focus:ring-accent/5 outline-none transition-all;
+}
