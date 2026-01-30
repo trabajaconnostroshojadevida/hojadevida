@@ -1,110 +1,76 @@
 <div class="bg-gray-50 font-[sans-serif]">
-    <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
-      <div class="max-w-md w-full">
-       
-  
-        <div class="p-8 rounded-2xl bg-white shadow">
-          <h2 class="text-gray-800 text-center text-2xl font-bold">INICIAR SESIÓN</h2>
-          <form class="mt-8 space-y-4">
-            <div>
-              <label class="text-gray-800 text-sm mb-2 block">Usuario</label>
-              <div class="relative flex items-center">
-                <input [(ngModel)]="email" name="username" type="text" required class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" placeholder="Ingrese su usuario" />
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
-                  <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
-                  <path d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z" data-original="#000000"></path>
-                </svg>
-              </div>
-            </div>
-  
-            <div>
-              <label class="text-gray-800 text-sm mb-2 block">Contraseña</label>
-              <div class="relative flex items-center">
-                <input [(ngModel)]="password" 
-                       name="password" 
-                       (keydown.enter)="loginWithEmail()"
-                       [type]="showPassword ? 'text' : 'password'" 
-                       required 
-                       class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" 
-                       placeholder="Ingrese su Contraseña" />
-                
-                <!-- Ícono de ojo abierto (cuando la contraseña está oculta) -->
-                <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" 
-                     class="w-5 h-5 absolute right-4 cursor-pointer text-gray-500 hover:text-gray-700 transition" 
-                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                     (click)="togglePassword()">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7s-8.268-2.943-9.542-7z"/>
-                </svg>
-            
-                <!-- Ícono de ojo cerrado (cuando la contraseña está visible) -->
-                <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" 
-                     class="w-5 h-5 absolute right-4 cursor-pointer text-gray-500 hover:text-gray-700 transition" 
-                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                     (click)="togglePassword()">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7 .746-2.356 2.15-4.412 4.025-5.882M9.53 9.53A3 3 0 0115 12m3.386-3.386A9.99 9.99 0 0121.542 12c-1.274 4.057-5.065 7-9.542 7-1.182 0-2.317-.206-3.375-.585M3 3l18 18"/>
-                </svg>
-            
-              </div>
-            </div>
+  <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+    <div class="max-w-md w-full">
 
-            <div class="flex flex-wrap items-center justify-between gap-4">
-              <div class="flex items-center">
-               
-                <label for="remember-me" class="ml-3 block text-sm text-gray-800">
-                  
-                </label>
-              </div>
-              <div class="text-sm">
-                <label (click)="olvidoContrasena()" class="text-blue-600 hover:underline font-semibold cursor-pointer">
-                  Olvidó su contraseña?
-                </label>
-              </div>
-              
+      <div class="p-8 rounded-2xl bg-white shadow-xl border border-gray-100">
+        <div class="text-center mb-10">
+          <img src="assets/iconos/lo2.png" alt="VERCHA" class="h-10 w-auto mx-auto mb-4">
+          <h2 class="text-gray-900 text-2xl font-black tracking-tight uppercase">Iniciar Sesión</h2>
+          <p class="text-gray-500 text-sm mt-2">Bienvenido de nuevo a Vercha</p>
+        </div>
+
+        <form class="space-y-4">
+          <div>
+            <label class="text-gray-700 text-xs font-bold uppercase tracking-wider mb-2 block">Correo
+              Electrónico</label>
+            <div class="relative flex items-center">
+              <input [(ngModel)]="email" name="username" type="email" required
+                class="w-full text-gray-800 text-sm border border-gray-200 px-4 py-3.5 rounded-xl outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all bg-gray-50/50"
+                placeholder="ejemplo@correo.com" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 absolute right-4 text-gray-400" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206" />
+              </svg>
             </div>
-  
-            <div class="!mt-8">
-              <button (click)="loginWithEmail()"  type="button" class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                INGRESAR
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <label class="text-gray-700 text-xs font-bold uppercase tracking-wider block">Contraseña</label>
+              <a (click)="olvidoContrasena()"
+                class="text-accent text-[10px] uppercase font-bold hover:underline cursor-pointer">¿Olvidaste tu
+                contraseña?</a>
+            </div>
+            <div class="relative flex items-center">
+              <input [(ngModel)]="password" name="password" (keydown.enter)="loginWithEmail()"
+                [type]="showPassword ? 'text' : 'password'" required
+                class="w-full text-gray-800 text-sm border border-gray-200 px-4 py-3.5 rounded-xl outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all bg-gray-50/50"
+                placeholder="Ingresa tu contraseña" />
+
+              <!-- Password Toggle SVG Icons -->
+              <button type="button" (click)="togglePassword()"
+                class="absolute right-4 text-gray-400 hover:text-accent transition-colors">
+                <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7s-8.268-2.943-9.542-7z" />
+                </svg>
+                <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7 .746-2.356 2.15-4.412 4.025-5.882M9.53 9.53A3 3 0 0115 12m3.386-3.386A9.99 9.99 0 0121.542 12c-1.274 4.057-5.065 7-9.542 7-1.182 0-2.317-.206-3.375-.585M3 3l18 18" />
+                </svg>
               </button>
             </div>
-            <p class="text-gray-800 text-sm !mt-8 text-center">
-              No tienes cuenta? 
-              <a (click)="redirectToRegister()" class="text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold">
-                Regístrate aquí
-              </a>
-            </p>
-            
-            <button  (click)="loginWithGoogle()" type="button" class="w-full flex items-center justify-center gap-4 py-3 px-6 text-sm tracking-wide text-gray-800 border border-gray-300 rounded-md bg-gray-50 hover:bg-gray-100 focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20px" class="inline" viewBox="0 0 512 512">
-                <path fill="#fbbd00"
-                  d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"
-                  data-original="#fbbd00" />
-                <path fill="#0f9d58"
-                  d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216C305.044 385.147 281.181 392 256 392z"
-                  data-original="#0f9d58" />
-                <path fill="#31aa52"
-                  d="m139.131 325.477-86.308 86.308a260.085 260.085 0 0 0 22.158 25.235C123.333 485.371 187.62 512 256 512V392c-49.624 0-93.117-26.72-116.869-66.523z"
-                  data-original="#31aa52" />
-                <path fill="#3c79e6"
-                  d="M512 256a258.24 258.24 0 0 0-4.192-46.377l-2.251-12.299H256v120h121.452a135.385 135.385 0 0 1-51.884 55.638l86.216 86.216a260.085 260.085 0 0 0 25.235-22.158C485.371 388.667 512 324.38 512 256z"
-                  data-original="#3c79e6" />
-                <path fill="#cf2d48"
-                  d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606C388.668 26.629 324.381 0 256 0l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z"
-                  data-original="#cf2d48" />
-                <path fill="#eb4132"
-                  d="M256 120V0C187.62 0 123.333 26.629 74.98 74.98a259.849 259.849 0 0 0-22.158 25.235l86.308 86.308C162.883 146.72 206.376 120 256 120z"
-                  data-original="#eb4132" />
-              </svg>
-              Continue con google
+          </div>
+
+          <div class="pt-6">
+            <button (click)="loginWithEmail()" type="button"
+              class="w-full py-4 px-4 text-sm font-bold tracking-widest rounded-xl text-white bg-primary hover:bg-primary-dark transition-all transform active:scale-95 shadow-lg shadow-primary/20">
+              INGRESAR
             </button>
-          </form>
-        </div>
+          </div>
+
+          <p class="text-gray-600 text-sm text-center pt-8">
+            ¿No tienes una cuenta?
+            <a (click)="redirectToRegister()"
+              class="text-accent hover:underline font-bold ml-1 cursor-pointer">Regístrate aquí</a>
+          </p>
+        </form>
       </div>
     </div>
   </div>
-
-  
+</div>

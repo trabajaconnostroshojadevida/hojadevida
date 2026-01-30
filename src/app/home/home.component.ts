@@ -1,40 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { FirestoreService } from '../services/firestore.service';
 import { CommonModule } from '@angular/common';
-
-interface Ropa {
-  genero: string;
-  tipo: string;
-  url: string;
-  nombre:string;
-}
+import { RouterModule } from '@angular/router';
+import { ProductService, Product } from '../services/product.service';
+import { CartService } from '../services/cart.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
 
-  ropa$: Observable<Ropa[]> | undefined;
+  products: Product[] = [];
+  loading = true;
 
-  ropaList: Ropa[] = [
-    {
-      genero: '',
-      tipo: '',
-      url: '',
-      nombre:''
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private notification: NotificationService
+  ) { }
+
+  async ngOnInit() {
+    this.loading = true;
+    const { data, error } = await this.productService.getProducts(8);
+    if (data) {
+      this.products = data;
     }
-  ]
+    this.loading = false;
+  }
 
-  constructor(private firestoreService: FirestoreService) {}
-
-  ngOnInit(): void {
-    this.ropa$ = this.firestoreService.getRopa();
-    this.ropa$?.subscribe(ropaList => {
-     this.ropaList=  ropaList;
-    });
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    // Notification is now handled by CartService for consistency
   }
 }
